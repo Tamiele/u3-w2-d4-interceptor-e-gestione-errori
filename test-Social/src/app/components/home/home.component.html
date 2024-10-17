@@ -1,0 +1,28 @@
+<span class="badge bg-secondary position-sticky z-1 top-0 ms-2 shadow fs-1">{{
+  like
+}}</span>
+<div class="container">
+  <div class="row">
+    <div
+      *ngFor="let photo of arrayPhoto"
+      class="col-lg-4 col-md-6 col-sm-12 mb-4"
+    >
+      <div class="card shadow-sm">
+        <img [src]="photo.thumbnailUrl" class="card-img-top" alt="Photos" />
+        <div class="card-body">
+          <h5 class="card-title">{{ photo.title }}</h5>
+
+          <div class="d-flex align-items-center mb-2">
+            <button (click)="addLike(photo)" class="btn btn-primary me-2">
+              <i class="bi bi-hand-thumbs-up"></i> Like
+            </button>
+          </div>
+
+          <button (click)="removePhoto(photo)" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
