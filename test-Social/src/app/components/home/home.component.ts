@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     this.photoSvc.getAllPhoto().subscribe({
       next: (photo) => {
         this.arrayPhoto = photo.filter((photo) => photo.albumId === 1);
+        console.log(this.arrayPhoto);
       },
     });
 

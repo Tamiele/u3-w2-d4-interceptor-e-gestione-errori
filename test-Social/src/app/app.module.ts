@@ -5,14 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
-import { provideHttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  provideHttpClient,
+  HTTP_INTERCEPTORS,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { ErrorInterceptor } from './error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
